@@ -110,9 +110,16 @@ int main(void) {
   glfwSetKeyCallback(window, key_callback);
 
   glEnable(GL_TEXTURE_2D);
-  glEnable(GL_DEPTH_TEST);
-  glEnable(GL_BLEND);
-  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+  //glEnable(GL_DEPTH_TEST);
+
+  // works with etnaviv:
+  //glEnable(GL_BLEND);
+  //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+  // broken with etnaviv
+  glEnable(GL_ALPHA_TEST);
+  glAlphaFunc(GL_GREATER, 0.666);
+
   init_texture();
   
   while (!glfwWindowShouldClose(window)) {
